@@ -66,6 +66,13 @@ function answerTableHtml(answerTable, name) {
 
     container.setAttribute('class', 'answers');
     container.appendChild(answerTable);
+
+    const answers = answerTable.getElementsByTagName('li');
+    [...answers].forEach(answer => {
+        answer.onclick = () => {
+            answer.getElementsByTagName('span')[0].classList.toggle('visible');
+        };
+    });
     
     return container;
 }
@@ -79,12 +86,13 @@ function setUpComponents() {
     
     loadPage(date);
 
-    const dateChangeForm = document.getElementById('change-date-form');
-    dateChangeForm.onsubmit = e => {
+    document.getElementById('change-date-form').onsubmit = e => {
         e.preventDefault();
         date = new Date(`${dateChangeInput.value} 00:00`);
         loadPage(date);
     }
+
+    document.getElementsByTagName
 }
 
 setUpComponents()
