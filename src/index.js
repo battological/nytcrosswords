@@ -24,8 +24,11 @@ function loadPage(date=null) {
             const across = answerTableHtml(answersAcross, 'Across');
             const vertical = answerTableHtml(answersVertical, 'Vertical');
 
-            document.getElementById('answers-container').appendChild(across);
-            document.getElementById('answers-container').appendChild(vertical);
+            const answersContainer = document.getElementById('answers-container');
+            answersContainer.appendChild(across);
+            answersContainer.appendChild(vertical);
+
+            [...answersContainer.getElementsByTagName('a')].forEach(e => e.removeAttribute('href'));
         })
 }
 
