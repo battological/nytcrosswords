@@ -3,15 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>NYT Crossword Hidden Solutions</title>
+        <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet"> 
         <style>
             #answers-container {
                 display: flex;
+                flex-direction: column;
             }
             .answers {
                 flex: 1;
             }
             .answers a {
-                color: #000b54;
                 text-decoration: none;
             }
             .answers li {
@@ -24,6 +25,7 @@
                 padding: 10px 8px;
             }
             .answers li span {
+                color: #000b54;
                 display: none;
                 margin-left: 20%;
             }
@@ -33,15 +35,26 @@
             .answers ul {
                 padding: 0 10% 0 0;
             }
+            body {
+                font-family: 'Recursive', sans-serif;
+            }
             footer {
                 border-top: 1px solid lightgray;
                 font-size: small;
             }
+
+            @media (min-width: 600px) {  /* larger flow */
+                #answers-container {
+                    flex-flow: row wrap;
+                }
+            }
         </style>
     </head>
     <body>
-        <h1>New York Times Crossword Answers</h1>
-        <h2 id="date"></h2>
+        <div id="head">
+            <h1>New York Times Crossword Answers</h1>
+            <h2 id="date"></h2>
+        </div>
         <div id="change-date">
             <form id="change-date-form">
                 <label for="change-date-input" id="change-date-label">Set date:</label>
@@ -49,11 +62,12 @@
                 <button type="submit" id="change-date-submit">Change</button>
             </form>
         </div>
-        <h3 style="margin-bottom: 0;">Answers</h3>
-        <div class="instructions">Click and hold clue boxes to reveal answers. Click the clues themselves to view alternate possible answers.</div>
-        <div id="answers-container"></div>
-        <footer>Data from <a href="https://nytcrosswordanswers.org/">NYT Crossword Answers</a>.
-            The purpose of this page is to reformat answers so they are not immediately visible.</footer>
+        <div id="answers">
+            <h3 style="margin-bottom: 0;">Answers</h3>
+            <div class="instructions">Click and hold clue boxes to reveal answers. Click the clues themselves to view alternate possible answers.</div>
+            <div id="answers-container"></div>
+        </div>
+        <footer>Data from <a href="https://nytcrosswordanswers.org/">NYT Crossword Answers</a>. The purpose of this page is to reformat answers so they are not immediately visible.</footer>
         <script src='main.js'></script>
     </body>
 </html>
