@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/battological/nyt-crossword.git"
+    "url": "git+https://github.com/battological/nytcrosswords.git"
   },
   "author": "Garrick Sherman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/battological/nyt-crossword/issues"
+    "url": "https://github.com/battological/nytcrosswords/issues"
   },
-  "homepage": "https://github.com/battological/nyt-crossword#readme",
+  "homepage": "https://github.com/battological/nytcrosswords#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "webpack": "^4.44.1",
