@@ -1,0 +1,26 @@
+{
+  "name": "nyt-crossword",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/solution-hider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=development --watch=true",
+    "deploy": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/battological/nyt-crossword.git"
+  },
+  "author": "Garrick Sherman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/battological/nyt-crossword/issues"
+  },
+  "homepage": "https://github.com/battological/nyt-crossword#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
