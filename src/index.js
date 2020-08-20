@@ -41,6 +41,13 @@ function pad(n) {
 }
 
 function convertDate(isoDate) {
+    // This stupid solution brought to you by iOS Safari
+    if (!(isoDate instanceof Date)) {
+        const datePieces = isoDate.split(/[- :]/);
+        console.log(datePieces[0], datePieces[1]-1, datePieces[2], datePieces[3], datePieces[4], datePieces[5]);
+        isoDate = new Date(datePieces[0], datePieces[1]-1, datePieces[2], datePieces[3], datePieces[4], datePieces[5]);
+    }
+
     const day = pad(isoDate.getDate());
     const month = pad(isoDate.getMonth() + 1);
     const year = isoDate.getFullYear().toString().slice(2);
@@ -88,7 +95,7 @@ function setUpComponents() {
 
     document.getElementById('change-date-form').onsubmit = e => {
         e.preventDefault();
-        date = new Date(`${dateChangeInput.value} 00:00`);
+        date = `${dateChangeInput.value} 00:00:00`;
         loadPage(date);
     }
 
