@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const pageBase = 'https://nytcrosswordanswers.org/wp-json/wp/v2/posts?f=b&slug=nyt-crossword-answers-'
+const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+const pageBase = 'https://nytcrosswordanswers.org/nyt-crossword-answers-';
 
 function loadPage(date=null) {
     clearPage();
@@ -11,13 +12,13 @@ function loadPage(date=null) {
     const convertedDate = convertDate(date);
     document.getElementById('date').innerText = convertedDate;
 
-    const page = pageBase + convertedDate;
+    const page = corsProxy + pageBase + convertedDate + '/';
     console.log(`Requesting from page ${page}`);
 
     const dummyDom = document.createElement('div');
     axios.get(page)
         .then(res => {
-            const content = res.data[0].content.rendered;
+            const content = res.data;
             dummyDom.innerHTML = content;
             const [ answersAcross, answersVertical ] = answerTables(dummyDom);
 
@@ -29,7 +30,7 @@ function loadPage(date=null) {
             answersContainer.appendChild(vertical);
 
             [...answersContainer.getElementsByTagName('a')].forEach(e => e.removeAttribute('href'));
-        })
+        });
 }
 
 function clearPage() {
@@ -62,7 +63,7 @@ function convertDateHtml(isoDate) {
 }
 
 function answerTables(pageContent) {
-    return [...pageContent.getElementsByTagName('ul')];
+    return [...pageContent.getElementsByClassName('nywrap')[0].getElementsByTagName('ul')];
 }
 
 function answerTableHtml(answerTable, name) {
